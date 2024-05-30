@@ -56,7 +56,7 @@ def main():
     #arr = "CJU"
     dep = "CJU"
     arr = "GMP"
-    search_date = "20240610"
+    search_date = "20240609"
     start_time_str = "14:00"
     end_time_str = "17:10"
     start_time = datetime.strptime(start_time_str, "%H:%M").time()
