@@ -1,7 +1,9 @@
+import os
 import requests
 import json
 import time
 from datetime import datetime
+from dotenv import load_dotenv
 
 #
 # 제주도닷컴에서 원하는 조건의 항공편이 있는지 확인하는 프로그램입니다.
@@ -27,7 +29,7 @@ def fetch_and_parse_json(url):
 # 슬랙으로 메시지를 보내는 함수
 def send_slack_webhook(text):
     # Webhook URL
-    webhook_url = 'https://hooks.slack.com/services/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'
+    webhook_url = os.getenv("SLACK_WEB_HOOK_URL")
 
     # 메시지 데이터
     message_data = {
@@ -54,7 +56,7 @@ def main():
     #arr = "CJU"
     dep = "CJU"
     arr = "GMP"
-    search_date = "20240609"
+    search_date = "20240610"
     start_time_str = "14:00"
     end_time_str = "17:10"
     start_time = datetime.strptime(start_time_str, "%H:%M").time()
@@ -99,4 +101,5 @@ def main():
 
 # 메인 함수 호출
 if __name__ == "__main__":
+    load_dotenv()
     main()
